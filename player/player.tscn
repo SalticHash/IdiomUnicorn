@@ -394,6 +394,8 @@ volume_db = -33.98
 shape = SubResource("RectangleShape2D_jh3y0")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=84603424]
+position = Vector2(96, -32)
+position_smoothing_enabled = true
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1089577194]
 one_shot = true
