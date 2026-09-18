@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://b40d4ie8m2idi"]
+
+[ext_resource type="Script" uid="uid://cnh2844rpvljs" path="res://sword_knight/sword_knight.gd" id="1_ji0xq"]
+[ext_resource type="Texture2D" uid="uid://bqlihkqbevquw" path="res://sword_knight/sword-knight-01.png" id="2_qyrm0"]
+[ext_resource type="AudioStream" uid="uid://3ahqtyntxhq4" path="res://sword_knight/swordknight-dead.ogg" id="3_mnmlr"]
+[ext_resource type="AudioStream" uid="uid://skdbfewbr7tj" path="res://sword_knight/sword.ogg" id="4_mnmlr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyrm0"]
+atlas = ExtResource("2_qyrm0")
+region = Rect2(80, 32, 40, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c33at"]
+atlas = ExtResource("2_qyrm0")
+region = Rect2(0, 0, 40, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4kud"]
+atlas = ExtResource("2_qyrm0")
+region = Rect2(40, 0, 40, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xep4q"]
+atlas = ExtResource("2_qyrm0")
+region = Rect2(80, 0, 40, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctn3l"]
+atlas = ExtResource("2_qyrm0")
+region = Rect2(120, 0, 40, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a252m"]
+atlas = ExtResource("2_qyrm0")
+region = Rect2(160, 0, 40, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gs1b"]
+atlas = ExtResource("2_qyrm0")
+region = Rect2(200, 0, 40, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imfoh"]
+atlas = ExtResource("2_qyrm0")
+region = Rect2(240, 0, 40, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma3kh"]
+atlas = ExtResource("2_qyrm0")
+region = Rect2(40, 32, 40, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jh3y0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyrm0")
+}],
+"loop": 0,
+"name": &"fall",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c33at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4kud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xep4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctn3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a252m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gs1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imfoh")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma3kh")
+}],
+"loop": 0,
+"name": &"jump",
+"speed": 11.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jh3y0"]
+size = Vector2(25, 20)
+
+[node name="SwordKnight" type="CharacterBody2D" unique_id=2081823644]
+collision_layer = 0
+script = ExtResource("1_ji0xq")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1561776560]
+position = Vector2(-2, -2)
+sprite_frames = SubResource("SpriteFrames_jh3y0")
+animation = &"fall"
+
+[node name="Die" type="AudioStreamPlayer" parent="." unique_id=1179933945]
+stream = ExtResource("3_mnmlr")
+
+[node name="Attack" type="AudioStreamPlayer" parent="." unique_id=81826541]
+stream = ExtResource("4_mnmlr")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=359486403]
+shape = SubResource("RectangleShape2D_jh3y0")
+
+[node name="Area" type="Area2D" parent="." unique_id=502021608]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape2D" parent="Area" unique_id=659952218]
+shape = SubResource("RectangleShape2D_jh3y0")
+
+[node name="JumpTimer" type="Timer" parent="." unique_id=917657707]
+one_shot = true
+
+[node name="VisibleOnScreen" type="VisibleOnScreenNotifier2D" parent="." unique_id=721243521]
+rect = Rect2(-32, -32, 64, 64)
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
+[connection signal="timeout" from="JumpTimer" to="." method="jump"]
+[connection signal="screen_exited" from="VisibleOnScreen" to="." method="screen_exited"]

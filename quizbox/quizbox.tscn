@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://ujlckhj248in"]
+
+[ext_resource type="Script" uid="uid://c1mwbrleo2gas" path="res://quizbox/quizbox.gd" id="1_o8386"]
+[ext_resource type="AudioStream" uid="uid://c0pevcr7lw5lq" path="res://quizbox/right.ogg" id="2_fk148"]
+[ext_resource type="AudioStream" uid="uid://cvy4p4vhf3fr1" path="res://quizbox/wrong.ogg" id="3_x0a6d"]
+
+[node name="Quizbox" type="CanvasLayer" unique_id=679709327]
+script = ExtResource("1_o8386")
+
+[node name="Quizbox" type="Control" parent="." unique_id=929406524]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="Quizbox" unique_id=492017766]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuestionPanel" type="Panel" parent="Quizbox/Container" unique_id=1880424808]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Align" type="VBoxContainer" parent="Quizbox/Container/QuestionPanel" unique_id=1323450799]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Question" type="Label" parent="Quizbox/Container/QuestionPanel/Align" unique_id=1407822826]
+unique_name_in_owner = true
+layout_mode = 2
+text = "What does \"...\" mean?"
+
+[node name="Sentence" type="Label" parent="Quizbox/Container/QuestionPanel/Align" unique_id=467220343]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "talk bout sometjin talk bout sometjintalk bout sometjintalk bout sometjintalk bout sometjin"
+autowrap_mode = 2
+
+[node name="Button1" type="Button" parent="Quizbox/Container" unique_id=691314385]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Hola Hola Hola, esa cancion pero ya no me la se"
+alignment = 0
+
+[node name="Button2" type="Button" parent="Quizbox/Container" unique_id=1070357720]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Hola Hola Hola, esa cancion pero ya no me la se"
+alignment = 0
+
+[node name="Button3" type="Button" parent="Quizbox/Container" unique_id=2096528926]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Hola Hola Hola, esa cancion pero ya no me la se"
+alignment = 0
+
+[node name="Correct" type="AudioStreamPlayer" parent="." unique_id=125739672]
+stream = ExtResource("2_fk148")
+
+[node name="Incorrect" type="AudioStreamPlayer" parent="." unique_id=1981724320]
+stream = ExtResource("3_x0a6d")

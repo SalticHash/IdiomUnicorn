@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://diwgbixvhrn66" path="res://world/background/bg-04-purple.png" id="4_ov2xu"]
 [ext_resource type="Texture2D" uid="uid://bifhnss8pfi1m" path="res://world/background/bg-06-ground-dark.png" id="5_mad0u"]
 [ext_resource type="Texture2D" uid="uid://kke1sl5snnj" path="res://world/background/bg-07-clouds.png" id="6_ocfjn"]
+[ext_resource type="PackedScene" uid="uid://ba7f32ihvjfj4" path="res://token/token.tscn" id="10_fyhu2"]
+[ext_resource type="PackedScene" uid="uid://b40d4ie8m2idi" path="res://sword_knight/sword_knight.tscn" id="11_ov2xu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tcf2h"]
 texture = ExtResource("1_6xmxd")
@@ -129,3 +131,32 @@ floor_constant_speed = true
 stream = ExtResource("3_4717r")
 volume_db = -15.0
 autoplay = true
+
+[node name="Token" parent="." unique_id=1170689248 instance=ExtResource("10_fyhu2")]
+position = Vector2(640, 64)
+type = 1
+
+[node name="Token2" parent="." unique_id=1359921972 instance=ExtResource("10_fyhu2")]
+position = Vector2(776, 64)
+type = 4
+
+[node name="SwordKnight" parent="." unique_id=2081823644 instance=ExtResource("11_ov2xu")]
+position = Vector2(832, 118)
+
+[node name="SwordKnight2" parent="." unique_id=1662913071 instance=ExtResource("11_ov2xu")]
+position = Vector2(864, 118)
+
+[node name="SwordKnight3" parent="." unique_id=1255275866 instance=ExtResource("11_ov2xu")]
+position = Vector2(896, 118)
+
+[node name="SwordKnight4" parent="." unique_id=670670885 instance=ExtResource("11_ov2xu")]
+position = Vector2(928, 118)
+
+[node name="SwordKnight5" parent="." unique_id=1173635419 instance=ExtResource("11_ov2xu")]
+position = Vector2(960, 118)
+
+[node name="SwordKnight6" parent="." unique_id=1302120346 instance=ExtResource("11_ov2xu")]
+position = Vector2(992, 118)
+
+[node name="SwordKnight7" parent="." unique_id=1543467210 instance=ExtResource("11_ov2xu")]
+position = Vector2(1024, 118)
