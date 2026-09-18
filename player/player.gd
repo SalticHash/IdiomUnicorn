@@ -128,7 +128,7 @@ func _on_attack_timer_timeout() -> void:
 		
 func killed() -> void:
 	rainbow_kill_count += 1
-	if !attacking: rainbow_kill_count = 1
+	if !attacking: rainbow_kill_count = 0
 	if rainbow_kill_count > 2 and rainbow_kill_count < 7:
 		$Claps.get_child(max(rainbow_kill_count - 3, 0)).stop()
 		$Claps.get_child(rainbow_kill_count - 2).play()
