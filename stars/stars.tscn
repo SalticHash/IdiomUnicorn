@@ -13,15 +13,9 @@ particles_anim_loop = true
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jh3y0"]
 lifetime_randomness = 0.34
 particle_flag_disable_z = true
-angle_min = 1.0728835e-05
-angle_max = 360.00003
-direction = Vector3(0, 0, 0)
-spread = 180.0
-initial_velocity_min = 70.0
-initial_velocity_max = 80.0
 gravity = Vector3(0, 0, 0)
-anim_speed_max = 2.02
-anim_offset_max = 1.0
+anim_speed_min = 3.1999998
+anim_speed_max = 3.1999998
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iqwlu"]
 atlas = ExtResource("3_jeqtk")
@@ -168,22 +162,43 @@ animations = [{
 }],
 "loop": 0,
 "name": &"sparkle",
-"speed": 11.0
+"speed": 20.0
 }]
 
 [node name="Stars" type="Node2D" unique_id=1432665065]
+z_index = -2
 script = ExtResource("1_d4cbr")
 
 [node name="Stars" type="GPUParticles2D" parent="." unique_id=1390018394]
 material = SubResource("CanvasItemMaterial_1d8oa")
 emitting = false
 texture = ExtResource("1_q068g")
-one_shot = true
-explosiveness = 0.56
+lifetime = 0.8
 process_material = SubResource("ParticleProcessMaterial_jh3y0")
 
-[node name="Sparkle" type="AnimatedSprite2D" parent="." unique_id=71016612]
+[node name="Sparkle1" type="AnimatedSprite2D" parent="." unique_id=71016612]
+position = Vector2(-16, -16)
 sprite_frames = SubResource("SpriteFrames_jh3y0")
 animation = &"sparkle"
 frame = 19
 frame_progress = 1.0
+
+[node name="Sparkle2" type="AnimatedSprite2D" parent="." unique_id=574717949]
+position = Vector2(16, -8)
+sprite_frames = SubResource("SpriteFrames_jh3y0")
+animation = &"sparkle"
+frame = 19
+frame_progress = 1.0
+
+[node name="Sparkle3" type="AnimatedSprite2D" parent="." unique_id=1333854036]
+position = Vector2(0, 8)
+sprite_frames = SubResource("SpriteFrames_jh3y0")
+animation = &"sparkle"
+frame = 19
+frame_progress = 1.0
+
+[node name="Timer" type="Timer" parent="." unique_id=2088589708]
+wait_time = 0.05
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

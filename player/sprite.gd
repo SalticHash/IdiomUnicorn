@@ -12,6 +12,7 @@ func _process(_delta: float) -> void:
 		tween.tween_property(self, "rotation",0.0, 0.1)
 		tween.tween_property(self, "position",Vector2(0.0, -5.0), 0.1)
 	if player.attacking: speed_scale = 1.11
+	elif player.won or player.dead: speed_scale = 1.0
 	elif !player.is_on_floor(): speed_scale = 1.0
 	elif player.running: speed_scale = 1.67 # Frame length = 0.05
 	else: speed_scale = 1.11 # Frame length = 0.075

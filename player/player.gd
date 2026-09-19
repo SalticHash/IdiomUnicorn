@@ -14,6 +14,7 @@ var kill_score: int = 0 :
 	get():
 		return [100, 200, 400, 600, 800, 900, 1000][min(rainbow_kill_count, 6)]
 
+var won: bool = false
 var spring: bool = false
 var dead: bool = false
 var dying: bool = false
@@ -28,6 +29,11 @@ func _ready() -> void:
 	$Sprite.play("walk")
 
 func _physics_process(delta: float) -> void:
+	if won:
+		velocity.x = 0
+		velocity.y += 750 * delta
+		move_and_slide()
+		return
 	if dead:
 		$Camera.global_position = global_position
 		death_time += delta
@@ -99,8 +105,6 @@ func _physics_process(delta: float) -> void:
 
 	velocity = velocity.sign() * velocity.abs().min(Vector2(500, 1000))
 	#if (this.dying || this.dead): { this.deathMovements(); }
-	
-	print(velocity.x)
 
 
 	move_and_slide()
@@ -149,3 +153,8 @@ func _on_quizbox_correct() -> void:
 func _on_quizbox_incorrect() -> void:
 	$Sprite.play("death")
 	dead = true
+
+func win() -> void:
+	$Sprite.play("victory")
+	$Sprite.offset.y = 3
+	won = true

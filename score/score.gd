@@ -6,3 +6,6 @@ func _ready() -> void:
 		play(str(value))
 		await animation_finished
 	queue_free()
+
+func _process(delta: float) -> void:
+	position.y -= delta * 30

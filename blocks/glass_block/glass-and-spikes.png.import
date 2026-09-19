@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hao6mlxi4dpl"
-path="res://.godot/imported/glass-shards.png-4ea74997e5dade9f64484d8565d7fb0e.ctex"
+uid="uid://cxsr13ya5hnur"
+path="res://.godot/imported/glass-and-spikes.png-9a04c3ce5cc03210f143c42ba0f57bd4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blocks/glass-shards.png"
-dest_files=["res://.godot/imported/glass-shards.png-4ea74997e5dade9f64484d8565d7fb0e.ctex"]
+source_file="res://blocks/glass_block/glass-and-spikes.png"
+dest_files=["res://.godot/imported/glass-and-spikes.png-9a04c3ce5cc03210f143c42ba0f57bd4.ctex"]
 
 [params]
 

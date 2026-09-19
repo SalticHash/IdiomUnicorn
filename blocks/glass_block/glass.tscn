@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://hp2ef8xxss6s"]
+
+[ext_resource type="Texture2D" uid="uid://cxsr13ya5hnur" path="res://blocks/glass_block/glass-and-spikes.png" id="1_c23um"]
+[ext_resource type="Script" uid="uid://c1ome2olfaq02" path="res://blocks/glass_block/glass.gd" id="1_kvakn"]
+[ext_resource type="AudioStream" uid="uid://clxb0v1q1oqs2" path="res://blocks/spike/spike.ogg" id="3_ftyys"]
+[ext_resource type="AudioStream" uid="uid://dlc8aw0eq600u" path="res://blocks/glass_block/glass-brick-crack.ogg" id="4_dv2hm"]
+[ext_resource type="AudioStream" uid="uid://dq5u6ecsptx0f" path="res://blocks/glass_block/glass-brick-break.ogg" id="5_phb3f"]
+[ext_resource type="Texture2D" uid="uid://hao6mlxi4dpl" path="res://blocks/glass_block/glass-shards.png" id="6_phb3f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jh3y0"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvakn"]
+atlas = ExtResource("1_c23um")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_py7qa"]
+atlas = ExtResource("1_c23um")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dv2hm"]
+atlas = ExtResource("1_c23um")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu4pe"]
+atlas = ExtResource("1_c23um")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgshx"]
+atlas = ExtResource("1_c23um")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5adoo"]
+atlas = ExtResource("1_c23um")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc44p"]
+atlas = ExtResource("1_c23um")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phb3f"]
+atlas = ExtResource("1_c23um")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jh3y0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvakn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py7qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dv2hm")
+}],
+"loop": 0,
+"name": &"break",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu4pe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgshx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5adoo")
+}],
+"loop": 0,
+"name": &"break_spike",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc44p")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phb3f")
+}],
+"loop": 0,
+"name": &"default_spike",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1d8oa"]
+size = Vector2(32, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_togml"]
+size = Vector2(28, 2)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jh3y0"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1d8oa"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(16, 16, 1)
+direction = Vector3(0, -1, 0)
+spread = 87.188
+initial_velocity_min = 54.44
+initial_velocity_max = 91.689995
+angular_velocity_min = -441.5
+angular_velocity_max = 462.11996
+gravity = Vector3(0, 750, 0)
+anim_offset_max = 1.0
+
+[node name="Glass" type="StaticBody2D" unique_id=769455930]
+script = ExtResource("1_kvakn")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1318570049]
+shape = SubResource("RectangleShape2D_jh3y0")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1491475835]
+sprite_frames = SubResource("SpriteFrames_jh3y0")
+animation = &"break_spike"
+speed_scale = 8.0
+
+[node name="SpikeCollision" type="Area2D" parent="." unique_id=1896907833]
+visible = false
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="Collision" type="CollisionShape2D" parent="SpikeCollision" unique_id=282576608]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_1d8oa")
+
+[node name="SpikeSound" type="AudioStreamPlayer" parent="." unique_id=144899337]
+stream = ExtResource("3_ftyys")
+
+[node name="BreakArea" type="Area2D" parent="." unique_id=1650377737]
+position = Vector2(0, -17)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape2D" parent="BreakArea" unique_id=556175612]
+shape = SubResource("RectangleShape2D_togml")
+
+[node name="Crack" type="AudioStreamPlayer" parent="." unique_id=2084184404]
+stream = ExtResource("4_dv2hm")
+volume_db = -30.0
+
+[node name="Break" type="AudioStreamPlayer" parent="." unique_id=941662945]
+stream = ExtResource("5_phb3f")
+volume_db = -19.962
+
+[node name="Shards" type="GPUParticles2D" parent="." unique_id=220842010]
+material = SubResource("CanvasItemMaterial_jh3y0")
+emitting = false
+amount = 18
+texture = ExtResource("6_phb3f")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1d8oa")
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="frame_changed" from="Sprite" to="." method="_on_sprite_frame_changed"]
+[connection signal="body_entered" from="SpikeCollision" to="." method="_on_spike_collision_body_entered"]
+[connection signal="body_entered" from="BreakArea" to="." method="_on_break_body_entered"]
