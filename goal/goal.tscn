@@ -147,25 +147,26 @@ animations = [{
 
 [node name="Goal" type="Node2D" unique_id=198421512]
 script = ExtResource("1_h3eg0")
+metadata/_edit_vertical_guides_ = [48.0]
+metadata/_edit_horizontal_guides_ = [128.0]
 
 [node name="Fountain" type="AnimatedSprite2D" parent="." unique_id=1352287573]
 z_index = -1
+position = Vector2(16, 0)
 sprite_frames = SubResource("SpriteFrames_jh3y0")
-offset = Vector2(0, -64)
+centered = false
 
 [node name="BalloonLeft" type="AnimatedSprite2D" parent="." unique_id=1491413350]
 visible = false
-position = Vector2(-32, -32)
+position = Vector2(16, 96)
 sprite_frames = SubResource("SpriteFrames_1d8oa")
 animation = &"left"
 
 [node name="BalloonRight" type="AnimatedSprite2D" parent="." unique_id=20797079]
 visible = false
-position = Vector2(32, -32)
+position = Vector2(80, 96)
 sprite_frames = SubResource("SpriteFrames_1d8oa")
 animation = &"right"
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1517021830]
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=890674272]
 stream = ExtResource("4_73eyi")

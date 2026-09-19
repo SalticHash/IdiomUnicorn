@@ -94,9 +94,9 @@ collision_layer = 0
 script = ExtResource("1_ji0xq")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1561776560]
-position = Vector2(-2, -2)
+position = Vector2(10.5, 8)
 sprite_frames = SubResource("SpriteFrames_jh3y0")
-animation = &"fall"
+animation = &"idle"
 
 [node name="Die" type="AudioStreamPlayer" parent="." unique_id=1179933945]
 stream = ExtResource("3_mnmlr")
@@ -105,21 +105,24 @@ stream = ExtResource("3_mnmlr")
 stream = ExtResource("4_mnmlr")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=359486403]
+position = Vector2(12.5, 10)
 shape = SubResource("RectangleShape2D_jh3y0")
+
+[node name="VisibleOnScreen" type="VisibleOnScreenNotifier2D" parent="." unique_id=721243521]
+position = Vector2(12, 10)
+rect = Rect2(-32, -32, 64, 64)
 
 [node name="Area" type="Area2D" parent="." unique_id=502021608]
 collision_layer = 0
 collision_mask = 2
 
 [node name="Collision" type="CollisionShape2D" parent="Area" unique_id=659952218]
+position = Vector2(12.5, 10)
 shape = SubResource("RectangleShape2D_jh3y0")
 
 [node name="JumpTimer" type="Timer" parent="." unique_id=917657707]
 one_shot = true
 
-[node name="VisibleOnScreen" type="VisibleOnScreenNotifier2D" parent="." unique_id=721243521]
-rect = Rect2(-32, -32, 64, 64)
-
+[connection signal="screen_exited" from="VisibleOnScreen" to="." method="screen_exited"]
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
 [connection signal="timeout" from="JumpTimer" to="." method="jump"]
-[connection signal="screen_exited" from="VisibleOnScreen" to="." method="screen_exited"]

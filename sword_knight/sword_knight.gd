@@ -4,10 +4,12 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -333
 var death: bool = false
 var applied_delay: bool = false
-var delay: float = 0.0
+@export var delay: float = 0.0
 @onready var score = preload("res://score/score.tscn")
+
 func _ready() -> void:
-	delay = wrap(position.x / 32.0, 0.0, 8.0) / 8.0
+	$JumpTimer.wait_time += delay
+	print($JumpTimer.wait_time)
 func _physics_process(delta: float) -> void:
 	if death:
 		$Sprite.rotate(TAU * delta)
@@ -19,9 +21,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y += 750 * delta
 	elif $Sprite.animation != "idle": #landed
 		$Sprite.play("idle")
-		if !applied_delay:
-			await get_tree().create_timer(delay).timeout
-			applied_delay = true
 		$JumpTimer.start()
 	
 	move_and_slide()
@@ -29,6 +28,7 @@ func _physics_process(delta: float) -> void:
 func jump():
 	if death: return
 	velocity.y = JUMP_VELOCITY
+	$JumpTimer.wait_time = 1.0
 
 
 func _on_area_body_entered(body: Node2D) -> void:
@@ -50,7 +50,7 @@ func kill(value: int = 0):
 	if value > 0:
 		var score_instance = score.instantiate()
 		score_instance.value = value
-		score_instance.global_position = global_position
+		score_instance.global_position = global_position + Vector2(13, 10)
 		add_sibling(score_instance)
 
 func screen_exited() -> void:

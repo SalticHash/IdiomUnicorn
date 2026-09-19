@@ -13,11 +13,11 @@ collision_mask = 2
 script = ExtResource("1_qeerf")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1469858987]
-position = Vector2(0, -4)
+position = Vector2(20, 18)
 texture = ExtResource("2_jrjuk")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1575268123]
-position = Vector2(0, -3)
+position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_jh3y0")
 
 [node name="Sound" type="AudioStreamPlayer" parent="." unique_id=415489322]

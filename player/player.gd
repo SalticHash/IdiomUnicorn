@@ -48,8 +48,6 @@ func _physics_process(delta: float) -> void:
 	
 	if invulnerable > 0.0: invulnerable -= delta
 	velocity.x = 0
-	if position.x > 2748:
-		position.x = 0
 	#standing = is_on_floor()
 	if !attacking:
 		if is_on_floor() and $Sprite.animation != "walk":
@@ -121,6 +119,7 @@ func attack():
 
 
 func _on_attack_timer_timeout() -> void:
+	if won or dead: return
 	if attacking:
 		attacking = false
 		$RefreshTimer.start()
@@ -157,4 +156,5 @@ func _on_quizbox_incorrect() -> void:
 func win() -> void:
 	$Sprite.play("victory")
 	$Sprite.offset.y = 3
+	attacking = false
 	won = true

@@ -20,10 +20,10 @@ func collect(_body):
 	$Sound.play()
 	var score_instance = score.instantiate()
 	score_instance.value = value
-	score_instance.global_position = global_position
+	score_instance.global_position = global_position + Vector2(11, 11)
 	add_sibling(score_instance)
 	var effect_instance = effect.instantiate()
-	effect_instance.global_position = global_position
+	effect_instance.global_position = global_position + Vector2(11, 11)
 	add_sibling(effect_instance)
 	if $Rainbow.is_playing(): await $Rainbow.animation_finished
 	if $Sound.playing: await $Sound.finished

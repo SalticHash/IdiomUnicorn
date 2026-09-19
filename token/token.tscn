@@ -176,13 +176,16 @@ collision_mask = 2
 script = ExtResource("1_apco0")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1841446546]
+position = Vector2(11, 11)
 texture = ExtResource("2_gy0pe")
 hframes = 5
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=649850744]
+position = Vector2(11, 11)
 shape = SubResource("RectangleShape2D_jh3y0")
 
 [node name="Rainbow" type="AnimatedSprite2D" parent="." unique_id=599011748]
+position = Vector2(11, 11)
 sprite_frames = SubResource("SpriteFrames_jh3y0")
 animation = &"rainbow"
 frame = 21

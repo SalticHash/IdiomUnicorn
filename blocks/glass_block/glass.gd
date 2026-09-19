@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var spike: bool = true
+@export var spike: bool = false
 func _ready() -> void:
 	if spike: $SpikeCollision.monitoring = true
 	$Sprite.play("default_spike" if spike else "default")

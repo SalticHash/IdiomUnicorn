@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var player = get_parent().get_node("Player")
+@onready var player = get_parent().get_parent().get_node("Player")
 var won: bool = false
 var balloons: bool = false
 @onready var effect = preload("res://stars/stars.tscn")
@@ -15,8 +15,8 @@ func _process(delta: float) -> void:
 		$BalloonRight.position += Vector2(speed / 2.0, -speed) * elapsed * delta
 		return
 	if won: return
-	if player.position.x > (position.x + 32.0):
-		get_parent().get_node("Music").stop()
+	if player.position.x > (position.x + 80.0):
+		get_parent().get_parent().get_node("Music").stop()
 		$Music.play()
 		$Timer.start()
 		won = true
@@ -31,6 +31,6 @@ func _on_timer_timeout() -> void:
 	$BalloonRight.show()
 	balloons = true
 	var effect_instance = effect.instantiate()
-	effect_instance.global_position = global_position
-	effect_instance.position.y -= 64.0
+	effect_instance.global_position = global_position + Vector2(48, 128)
+	effect_instance.position.y -= 16.0
 	add_sibling(effect_instance)

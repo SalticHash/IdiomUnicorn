@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://iu5ahj8661n0"]
+
+[ext_resource type="PackedScene" uid="uid://hp2ef8xxss6s" path="res://blocks/glass_block/glass.tscn" id="1_yqun3"]
+
+[node name="SpikeGlass" unique_id=769455930 instance=ExtResource("1_yqun3")]
+spike = true
+
+[node name="Sprite" parent="." index="1" unique_id=1491475835]
+animation = &"default_spike"
